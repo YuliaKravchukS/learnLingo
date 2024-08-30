@@ -1,0 +1,34 @@
+.AppBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 64px;
+}
+
+.leftAppBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 661px;
+}
+.wrapLogo {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  width: 133px;
+}
+.logo {
+  width: 32px;
+  height: 32px;
+}
+.icon {
+  width: 32px;
+  height: 32px;
+}
+.wrapLogo p {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+}
