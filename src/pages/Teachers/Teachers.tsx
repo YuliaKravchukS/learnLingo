@@ -1,11 +1,16 @@
 import React from "react";
 import DocumentTitle from "../../components/DocumentTitle";
+import FilterBar from "../../components/FilterBar/FilterBar";
+import TeachersList from "../../components/TeachersList/TeachersList";
 
 const Teachers = () => {
   return (
     <>
       <DocumentTitle>Teachers</DocumentTitle>
-      <div>Teachers</div>
+      <section>
+        <FilterBar />
+        <TeachersList />
+      </section>
     </>
   );
 };

@@ -1,0 +1,70 @@
+.hero {
+  gap: 24px;
+  height: 530px;
+  margin-bottom: 24px;
+  justify-content: space-between;
+}
+.heroText {
+  padding: 98px 64px;
+  border-radius: 30px;
+  background: #f8f8f8;
+}
+.heroText h1 {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.16;
+  letter-spacing: -0.96px;
+  margin-bottom: 32px;
+  max-width: 548px;
+}
+
+.heroText h1 > span {
+  font-style: italic;
+  font-weight: 400;
+  background-color: #fbe9ba;
+}
+
+.heroText p {
+  line-height: 1.37;
+  letter-spacing: -0.32px;
+  max-width: 470px;
+  margin-bottom: 64px;
+}
+
+.link {
+  border-radius: 12px;
+  background: #f4c550;
+  display: inline-flex;
+  padding: 16px 88px;
+  justify-content: center;
+  align-items: center;
+  color: #121417;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.56;
+}
+.img {
+  width: 568px;
+  height: 530px;
+}
+.list {
+  border-radius: 30px;
+  border: 1.5px dashed #f4c550;
+  /* width: 100%; */
+  padding: 40px 122px;
+  gap: 100px;
+}
+.item {
+  gap: 16px;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.14;
+  letter-spacing: -0.56px;
+}
+
+.item p:last-of-type {
+  color: rgba(18, 20, 23, 0.7);
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.28px;
+}

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Button from "../../ui/Button/Button";
 import LoginForm from "../LoginForm/LoginForm";
 import RegisterForm from "../RegisterForm/RegisterForm";
+import css from "./AuthMenu.module.css";
+import icons from "../../img/sprite.svg";
 
 const AuthMenu = () => {
   const [isOpenLogIn, setIsOpenLogIn] = useState<boolean>(false);
@@ -15,9 +17,19 @@ const AuthMenu = () => {
     }
   };
   return (
-    <div>
-      <Button type='button' cb={openPopUp} text='Log in' />
-      <Button type='button' cb={openPopUp} text='Registration' />
+    <div className={`flexWrap ${css.authMenu}`}>
+      <div className={`flexWrap ${css.logInWrap}`}>
+        <svg className={css.icon}>
+          <use href={`${icons}#icon-log-in`} />
+        </svg>
+        <Button className='logIn' type='button' cb={openPopUp} text='Log in' />
+      </div>
+      <Button
+        className='register'
+        type='button'
+        cb={openPopUp}
+        text='Registration'
+      />
       {isOpenLogIn && <LoginForm />}
       {isOpenRegistration && <RegisterForm />}
     </div>

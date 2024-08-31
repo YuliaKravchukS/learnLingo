@@ -1,0 +1,18 @@
+.logIn {
+  font-weight: 700;
+  line-height: 1.25;
+  position: relative;
+}
+
+.register,
+.logOut {
+  display: flex;
+  padding: 14px 39px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background: #121417;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.25;
+}

@@ -7,9 +7,9 @@ const Home: React.FC = () => {
   return (
     <>
       <DocumentTitle>Home</DocumentTitle>
-      <section>
-        <div>
-          <div>
+      <section className='container'>
+        <div className={`flexWrap ${css.hero}`}>
+          <div className={css.heroText}>
             <h1>
               Unlock your potential with the best <span>language</span> tutors
             </h1>
@@ -18,7 +18,9 @@ const Home: React.FC = () => {
               Tutors: Elevate your language proficiency to new heights by
               connecting with highly qualified and experienced tutors.
             </p>
-            <Link className={css.link} to='/teachers' />
+            <Link className={css.link} to='/teachers'>
+              Get started
+            </Link>
           </div>
 
           <img
@@ -28,20 +30,20 @@ const Home: React.FC = () => {
             alt='Drawn red-haired girl with a laptop'
           />
         </div>
-        <ul>
-          <li>
+        <ul className={`flexWrap ${css.list}`}>
+          <li className={`flexWrap ${css.item}`}>
             <p> 32,000 +</p>
             <p>Experienced tutors</p>
           </li>
-          <li>
-            <p>300,000 +</p>
+          <li className={`flexWrap ${css.item}`}>
+            <p>300,000+</p>
             <p>5-star tutor reviews</p>
           </li>
-          <li>
+          <li className={`flexWrap ${css.item}`}>
             <p>120 +</p>
             <p>Subjects taught</p>
           </li>
-          <li>
+          <li className={`flexWrap ${css.item}`}>
             <p>200 +</p>
             <p>Tutor nationalities</p>
           </li>

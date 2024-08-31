@@ -6,7 +6,12 @@ const UserMenu = () => {
   return (
     <div>
       <p>Welcome, </p>
-      <Button type='button' cb={handleClick} text='Log out' />
+      <Button
+        className='logOut'
+        type='button'
+        cb={handleClick}
+        text='Log out'
+      />
     </div>
   );
 };

@@ -5,7 +5,7 @@ import css from "./Navigation.module.css";
 const Navigation = () => {
   return (
     <nav>
-      <ul>
+      <ul className={css.list}>
         <li>
           <NavLink className={css.link} to='/'>
             Home

@@ -1,8 +1,8 @@
 import React from "react";
-import icons from "../../assets/sprite.svg";
+import icons from "../../img/sprite.svg";
 import css from "./AppBar.module.css";
 import Navigation from "../Navigation/Navigation";
-// import UserMenu from '../UserMenu/UserMenu'
+// import UserMenu from "../UserMenu/UserMenu";
 // import AuthMenu from "../AuthMenu/AuthMenu";
 
 const AppBar = () => {
@@ -20,6 +20,7 @@ const AppBar = () => {
           </div>
           <Navigation />
         </div>
+
         {/* {isLogined ?<UserMenu />:<AuthMenu/>} */}
       </div>
     </section>
