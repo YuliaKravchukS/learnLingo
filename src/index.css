@@ -11,6 +11,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
 
 a {
   display: block;
@@ -21,11 +26,15 @@ a {
 a:hover {
   background-color: #ffdc86;
 }
+svg {
+  padding: 0;
+  margin: 0;
+}
 
 body {
-  display: flex;
+  /* display: flex;
   place-items: start;
-  justify-content: center;
+  justify-content: center; */
   min-width: 320px;
   max-width: 1440px;
   min-height: 100vh;
@@ -33,7 +42,9 @@ body {
 }
 .container {
   max-width: 1440px;
+  min-width: 320px;
   padding: 20px 64px 32px;
+  margin: 0 auto;
 }
 .flexWrap {
   display: flex;
@@ -53,6 +64,11 @@ button {
 button:hover,
 button:focus {
   background-color: #ffdc86;
+}
+input {
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 img {

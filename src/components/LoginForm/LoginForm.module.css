@@ -1,0 +1,97 @@
+.modalOverlay {
+  background-color: rgba(0, 0, 0, 0.5);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* opacity: 0; */
+  /* pointer-events: none; */
+  transition: opacity 250ms ease-in-out;
+}
+.overlay {
+  border-radius: 30px;
+  background: #fff;
+  width: 566px;
+  height: 506px;
+  padding: 64px;
+  position: relative;
+}
+.icon {
+  width: 32px;
+  height: 32px;
+  stroke: #121417;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.overlay h2 {
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+  margin-bottom: 20px;
+}
+
+.text {
+  color: rgba(18, 20, 23, 0.8);
+  line-height: 1.38;
+  margin-bottom: 40px;
+}
+/* .form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+} */
+
+.input {
+  padding: 16px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  width: 100%;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.input::placeholder {
+  color: #121417;
+  line-height: 1.38;
+}
+
+.btnLogIn {
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  background: #f4c550;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.56;
+}
+.passwordInput {
+  position: relative;
+}
+.passwordInput > input {
+  margin-bottom: 40px;
+}
+.iconEye {
+  fill: none;
+  stroke: #121417;
+  position: absolute;
+  top: 18%;
+  right: 18px;
+  height: 20px;
+}
+.error {
+  color: rgb(232, 89, 89);
+  font-size: 12px;
+  position: absolute;
+  left: 82px;
+  bottom: -3px;
+}
