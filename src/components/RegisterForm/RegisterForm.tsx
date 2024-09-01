@@ -4,6 +4,27 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from "react";
+import { FormProp } from "../../types/indexTypes";
+import ReactModal from "react-modal";
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    padding: "0",
+    border: "none",
+    borderRadius: "30px",
+    transform: "translate(-50%, -50%)",
+  },
+  overlay: {
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+};
+
+ReactModal.setAppElement("#root");
 
 const schema = yup.object().shape({
   name: yup.string().required().min(3),
@@ -18,7 +39,7 @@ const schema = yup.object().shape({
 });
 type FormData = yup.InferType<typeof schema>;
 
-const RegisterForm = () => {
+const RegisterForm = ({ closeModal, state }: FormProp) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const togglePasswordVisibility = () => {
@@ -35,48 +56,68 @@ const RegisterForm = () => {
 
   const onSubmit = (data: FormData) => console.log(data);
   return (
-    <div>
-      <svg className={css.icon}>
-        <use href={`${icons}#icon-x`} />
-      </svg>
-      <h2>Registration</h2>
-      <p>
-        Thank you for your interest in our platform! In order to register, we
-        need some information. Please provide us with the following information
-      </p>
+    <ReactModal isOpen={state} onRequestClose={closeModal} style={customStyles}>
+      <div className={css.overlay}>
+        <button className={css.btnClose} onClick={closeModal}>
+          <svg className={css.icon}>
+            <use href={`${icons}#icon-x`} />
+          </svg>
+        </button>
+        <h2>Registration</h2>
+        <p className={css.text}>
+          Thank you for your interest in our platform! In order to register, we
+          need some information. Please provide us with the following
+          information
+        </p>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          {...register("name", { required: true, minLength: 3 })}
-          placeholder='Name'
-        />
-        {errors.name && <p className={css.error}>{errors.name.message}</p>}
-        <input
-          {...register("email", { required: true, minLength: 8 })}
-          placeholder='Email'
-        />
-        {errors.email && <p className={css.error}>{errors.email.message}</p>}
-        <div>
-          <input {...register("password", { min: 8 })} placeholder='Password' />
-          <span className={css.icon} onClick={togglePasswordVisibility}>
-            {showPassword ? (
-              <svg width='20' height='20'>
-                <use href={`${icons}#icon-eye`} />
-              </svg>
-            ) : (
-              <svg width='20' height='20'>
-                <use href={`${icons}#icon-eye-off`} />
-              </svg>
+        <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+          <div>
+            <input
+              {...register("name", { required: true, minLength: 3 })}
+              placeholder='Name'
+              className={css.input}
+            />
+            {errors.name && <p className={css.error}>{errors.name.message}</p>}
+          </div>
+          <div>
+            <input
+              {...register("email", { required: true, minLength: 8 })}
+              placeholder='Email'
+              className={css.input}
+            />
+            {errors.email && (
+              <p className={css.error}>{errors.email.message}</p>
             )}
-          </span>
-        </div>
-        {errors.password && (
-          <p className={css.error}>{errors.password.message}</p>
-        )}
+          </div>
+          <div className={css.passwordInput}>
+            <input
+              {...register("password", { min: 8 })}
+              placeholder='Password'
+              className={css.input}
+            />
+            <span className={css.iconEye} onClick={togglePasswordVisibility}>
+              {showPassword ? (
+                <svg width='20' height='20'>
+                  <use href={`${icons}#icon-eye`} />
+                </svg>
+              ) : (
+                <svg width='20' height='20'>
+                  <use href={`${icons}#icon-eye-off`} />
+                </svg>
+              )}
+            </span>
 
-        <button type='submit'>Sign Up</button>
-      </form>
-    </div>
+            {errors.password && (
+              <p className={css.error}>{errors.password.message}</p>
+            )}
+          </div>
+
+          <button className={css.btnLogIn} type='submit'>
+            Sign Up
+          </button>
+        </form>
+      </div>
+    </ReactModal>
   );
 };
 

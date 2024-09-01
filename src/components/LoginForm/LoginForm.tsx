@@ -4,6 +4,27 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from "react";
+import ReactModal from "react-modal";
+import { FormProp } from "../../types/indexTypes";
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    padding: "0",
+    border: "none",
+    borderRadius: "30px",
+    transform: "translate(-50%, -50%)",
+  },
+  overlay: {
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+};
+
+ReactModal.setAppElement("#root");
 
 const schema = yup.object().shape({
   email: yup
@@ -17,7 +38,7 @@ const schema = yup.object().shape({
 });
 type FormData = yup.InferType<typeof schema>;
 
-const LoginForm = () => {
+const LoginForm = ({ closeModal, state }: FormProp) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const togglePasswordVisibility = () => {
@@ -34,11 +55,14 @@ const LoginForm = () => {
 
   const onSubmit = (data: FormData) => console.log(data);
   return (
-    <div className={css.modalOverlay}>
+    <ReactModal isOpen={state} onRequestClose={closeModal} style={customStyles}>
       <div className={css.overlay}>
-        <svg className={css.icon}>
-          <use href={`${icons}#icon-x`} />
-        </svg>
+        <button className={css.btnClose} onClick={closeModal}>
+          <svg className={css.icon}>
+            <use href={`${icons}#icon-x`} />
+          </svg>
+        </button>
+
         <h2>Log In</h2>
         <p className={css.text}>
           Welcome back! Please enter your credentials to access your account and
@@ -46,14 +70,16 @@ const LoginForm = () => {
         </p>
 
         <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-         <div>
+          <div>
             <input
               {...register("email", { required: true, minLength: 8 })}
               placeholder='Email'
               className={css.input}
             />
-            {errors.email && <p className={css.error}>{errors.email.message}</p>}
-         </div>
+            {errors.email && (
+              <p className={css.error}>{errors.email.message}</p>
+            )}
+          </div>
           <div className={css.passwordInput}>
             <input
               {...register("password", { min: 8 })}
@@ -82,7 +108,7 @@ const LoginForm = () => {
           </button>
         </form>
       </div>
-    </div>
+    </ReactModal>
   );
 };
 

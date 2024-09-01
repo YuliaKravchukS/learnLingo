@@ -10,3 +10,8 @@ export interface BtnProp {
   text: string;
   cb: (text: string) => void;
 }
+
+export interface FormProp {
+  state: boolean;
+  closeModal: () => void;
+}

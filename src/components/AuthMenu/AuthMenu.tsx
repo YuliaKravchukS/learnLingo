@@ -12,9 +12,15 @@ const AuthMenu = () => {
   const openPopUp = (text: string) => {
     if (text === "Log in") {
       setIsOpenLogIn(true);
-    } else {
+    } else if (text === "Registration") {
       setIsOpenRegistration(true);
     }
+  };
+  const closePopUpLogIn = () => {
+    setIsOpenLogIn(false);
+  };
+  const closePopUpRegistr = () => {
+    setIsOpenRegistration(false);
   };
   return (
     <div className={`flexWrap ${css.authMenu}`}>
@@ -30,8 +36,15 @@ const AuthMenu = () => {
         cb={openPopUp}
         text='Registration'
       />
-      {isOpenLogIn && <LoginForm />}
-      {isOpenRegistration && <RegisterForm />}
+      {isOpenLogIn && (
+        <LoginForm state={isOpenLogIn} closeModal={closePopUpLogIn} />
+      )}
+      {isOpenRegistration && (
+        <RegisterForm
+          state={isOpenRegistration}
+          closeModal={closePopUpRegistr}
+        />
+      )}
     </div>
   );
 };

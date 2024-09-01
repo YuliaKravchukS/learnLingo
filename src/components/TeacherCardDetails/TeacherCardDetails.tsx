@@ -10,6 +10,10 @@ const TeacherCardDetails = () => {
   const openForm = () => {
     setIsOpenModal(true);
   };
+  const closeForm = () => {
+    setIsOpenModal(false);
+  };
+
   return (
     <div>
       <TeacherMainInfo />
@@ -43,7 +47,7 @@ const TeacherCardDetails = () => {
         text='Book trial lesson'
         cb={openForm}
       />
-      {isOpenModal && <BookForm />}
+      {isOpenModal && <BookForm state={isOpenModal} closeModal={closeForm} />}
     </div>
   );
 };
