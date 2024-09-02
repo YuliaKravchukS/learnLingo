@@ -6,6 +6,7 @@ import * as yup from "yup";
 import { useState } from "react";
 import ReactModal from "react-modal";
 import { FormProp } from "../../types/indexTypes";
+import { useAuth } from "../../context/auth-context";
 
 const customStyles = {
   content: {
@@ -40,6 +41,7 @@ type FormData = yup.InferType<typeof schema>;
 
 const LoginForm = ({ closeModal, state }: FormProp) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const { signIn } = useAuth();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -53,7 +55,10 @@ const LoginForm = ({ closeModal, state }: FormProp) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: FormData) => console.log(data);
+  const onSubmit = (data: FormData) => {
+    signIn(data);
+    closeModal();
+  };
   return (
     <ReactModal isOpen={state} onRequestClose={closeModal} style={customStyles}>
       <div className={css.overlay}>
@@ -82,6 +87,7 @@ const LoginForm = ({ closeModal, state }: FormProp) => {
           </div>
           <div className={css.passwordInput}>
             <input
+              type={showPassword ? "text" : "password"}
               {...register("password", { min: 8 })}
               placeholder='Password'
               className={css.input}

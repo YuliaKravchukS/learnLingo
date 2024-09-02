@@ -6,6 +6,7 @@ import * as yup from "yup";
 import { useState } from "react";
 import { FormProp } from "../../types/indexTypes";
 import ReactModal from "react-modal";
+import { useAuth } from "../../context/auth-context";
 
 const customStyles = {
   content: {
@@ -27,7 +28,7 @@ const customStyles = {
 ReactModal.setAppElement("#root");
 
 const schema = yup.object().shape({
-  name: yup.string().required().min(3),
+  displayName: yup.string().required().min(3),
   email: yup
     .string()
     .email("Invalid email address")
@@ -41,6 +42,7 @@ type FormData = yup.InferType<typeof schema>;
 
 const RegisterForm = ({ closeModal, state }: FormProp) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const { signUp } = useAuth();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -54,7 +56,11 @@ const RegisterForm = ({ closeModal, state }: FormProp) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: FormData) => console.log(data);
+  const onSubmit = (data: FormData) => {
+    signUp(data);
+    console.log("data: ", data);
+    closeModal();
+  };
   return (
     <ReactModal isOpen={state} onRequestClose={closeModal} style={customStyles}>
       <div className={css.overlay}>
@@ -73,14 +79,18 @@ const RegisterForm = ({ closeModal, state }: FormProp) => {
         <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
           <div>
             <input
-              {...register("name", { required: true, minLength: 3 })}
+              type='text'
+              {...register("displayName", { required: true, minLength: 3 })}
               placeholder='Name'
               className={css.input}
             />
-            {errors.name && <p className={css.error}>{errors.name.message}</p>}
+            {errors.displayName && (
+              <p className={css.error}>{errors.displayName.message}</p>
+            )}
           </div>
           <div>
             <input
+              type='email'
               {...register("email", { required: true, minLength: 8 })}
               placeholder='Email'
               className={css.input}
@@ -91,6 +101,7 @@ const RegisterForm = ({ closeModal, state }: FormProp) => {
           </div>
           <div className={css.passwordInput}>
             <input
+              type={showPassword ? "text" : "password"}
               {...register("password", { min: 8 })}
               placeholder='Password'
               className={css.input}

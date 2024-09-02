@@ -1,15 +1,20 @@
 import React from "react";
 import Button from "../../ui/Button/Button";
+import { useAuth } from "../../context/auth-context";
 
 const UserMenu = () => {
-  const handleClick = () => {};
+  const { user, signOut } = useAuth();
+  console.log("user: ", user);
+
   return (
     <div>
-      <p>Welcome, </p>
+      <p>Welcome, {user?.displayName}</p>
       <Button
         className='logOut'
         type='button'
-        cb={handleClick}
+        cb={() => {
+          signOut();
+        }}
         text='Log out'
       />
     </div>

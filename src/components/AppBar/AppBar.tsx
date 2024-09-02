@@ -4,8 +4,11 @@ import css from "./AppBar.module.css";
 import Navigation from "../Navigation/Navigation";
 import UserMenu from "../UserMenu/UserMenu";
 import AuthMenu from "../AuthMenu/AuthMenu";
+import { useAuth } from "../../context/auth-context";
 
 const AppBar = () => {
+  const { loading } = useAuth();
+
   return (
     <section className='container'>
       <div className={css.AppBar}>
@@ -20,9 +23,8 @@ const AppBar = () => {
           </div>
           <Navigation />
         </div>
-        <UserMenu />
-        <AuthMenu />
-        {/* {isLogined ?<UserMenu />:<AuthMenu/>} */}
+
+        {loading ? <UserMenu /> : <AuthMenu />}
       </div>
     </section>
   );
