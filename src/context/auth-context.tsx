@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import {
+  ApiProp,
   IAuth,
   LoginFormValues,
   Props,
@@ -15,6 +16,7 @@ import {
   firebaseSignUp,
 } from "../firebase/firebase";
 import toast, { Toaster } from "react-hot-toast";
+import { child, get, getDatabase, ref } from "firebase/database";
 
 export const AuthContext = createContext<IAuth>({
   user: firebaseAuth.currentUser,
@@ -22,6 +24,7 @@ export const AuthContext = createContext<IAuth>({
   signIn: () => {},
   signUp: () => {},
   signOut: () => {},
+  db: () => Promise.resolve([]),
 });
 
 export const AuthProvider = ({ children }: Props) => {
@@ -64,6 +67,7 @@ export const AuthProvider = ({ children }: Props) => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log("user: ", user);
+
         setCurrentUser(user);
         navigate("/teachers");
       })
@@ -88,7 +92,7 @@ export const AuthProvider = ({ children }: Props) => {
       });
   };
   const signOut = async () => {
-    setIsLoading(true);
+    setIsLoading(false);
     await firebaseSignOut()
       .then(() => {
         setCurrentUser(null);
@@ -100,12 +104,29 @@ export const AuthProvider = ({ children }: Props) => {
       });
   };
 
+  const dbRef = ref(getDatabase());
+  const db = async (): Promise<ApiProp> => {
+    try {
+      const snapshot = await get(child(dbRef, "/"));
+      if (snapshot.exists()) {
+        const teachersData = snapshot.val() as ApiProp;
+        return teachersData;
+      } else {
+        console.log("No data available");
+        return [];
+      }
+    } catch (error) {
+      console.error(error);
+      throw new Error("Failed to fetch data");
+    }
+  };
   const value: IAuth = {
     user: currentUser,
     loading: isLoading,
     signIn,
     signUp,
     signOut,
+    db,
   };
 
   useEffect(() => {

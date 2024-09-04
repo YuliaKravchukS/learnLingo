@@ -1,0 +1,135 @@
+.showMore {
+  display: blok;
+}
+
+.hidden {
+  /* display: none; */
+}
+.mainInfo {
+  display: flex;
+  gap: 48px;
+  padding: 24px;
+  width: 1184px;
+  min-height: 328px;
+  margin: 0 auto;
+}
+.avatar {
+  border-radius: 50%;
+  width: 96px;
+  height: 96px;
+}
+
+.avatarBorder {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #fbe9ba;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapInfo {
+  width: 968px;
+}
+.commonInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+.commonInfoRight p:first-of-type {
+  color: #8a8a89;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.commonInfoRight p:last-of-type {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.commonInfoLeft {
+  display: flex;
+  gap: 64px;
+}
+.commonInfoList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.commonInfoItem {
+  padding: 0 16px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+.commonInfoItem:last-of-type {
+  padding-right: 0;
+}
+.commonInfoItem:first-of-type {
+  padding-left: 0;
+}
+.text {
+  font-weight: 500;
+}
+.text > span {
+  color: #8a8a89;
+}
+.price {
+  color: #38cd3e;
+  font-weight: 500;
+}
+.icon {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: #121417;
+}
+
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.reviewer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatarReviewer {
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+}
+.name {
+  color: #8a8a89;
+  font-weight: 500;
+}
+.rating {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.29;
+  position: relative;
+}
+.rating::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-image: url("../../img/sprite.svg#icon-star");
+  top: 0;
+  left: -8px;
+}
+.text {
+  font-weight: 500;
+}

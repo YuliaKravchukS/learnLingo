@@ -1,20 +1,16 @@
 import React from "react";
+import { TeacherCardProp } from "../../types/indexTypes";
+import css from "./LevelsList.module.css";
 
-const LevelsList = () => {
+const LevelsList: React.FC<TeacherCardProp> = ({ teacher }) => {
   return (
-    <ul>
-      <li>
-        <p>#A1 Beginner</p>
-      </li>
-      <li>
-        <p>#A2 Elementary</p>
-      </li>
-      <li>
-        <p>#B1 Intermediate</p>
-      </li>
-      <li>
-        <p>#B2 Upper-Intermediate</p>
-      </li>
+    <ul className={css.list}>
+      {teacher?.levels &&
+        teacher.levels.map((level, idx) => (
+          <li className={css.item} key={idx}>
+            <p className={css.text}>{level}</p>
+          </li>
+        ))}
     </ul>
   );
 };
