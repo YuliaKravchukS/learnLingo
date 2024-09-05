@@ -32,16 +32,16 @@ svg {
 }
 
 body {
-  /* display: flex;
+  display: flex;
   place-items: start;
-  justify-content: center; */
+  justify-content: center;
   min-width: 320px;
   max-width: 1440px;
   min-height: 100vh;
-  margin: 0;
+  margin: 0 auto;
 }
 .container {
-  max-width: 1440px;
+  width: 1440px;
   min-width: 320px;
   padding: 20px 64px 32px;
   margin: 0 auto;

@@ -62,7 +62,9 @@
   display: flex;
   gap: 8px;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
+  height: 24px;
+  font-weight: 500;
 }
 .commonInfoItem:last-of-type {
   padding-right: 0;
@@ -72,13 +74,17 @@
 }
 .text {
   font-weight: 500;
+  margin-bottom: 8px;
 }
 .text > span {
   color: #8a8a89;
 }
-.price {
+.InfoText > span.price {
   color: #38cd3e;
   font-weight: 500;
+}
+.text:last-of-type {
+  margin-bottom: 16px;
 }
 .icon {
   width: 16px;
@@ -87,6 +93,9 @@
   stroke: #121417;
 }
 
+.experience {
+  margin-bottom: 32px;
+}
 .reviewsList {
   display: flex;
   flex-direction: column;
@@ -97,6 +106,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  margin-bottom: 16px;
 }
 .reviewer {
   display: flex;
@@ -114,22 +124,17 @@
   color: #8a8a89;
   font-weight: 500;
 }
-.rating {
+
+.text {
+  font-weight: 500;
+}
+.reviewer {
+  width: 100px;
+  margin-bottom: 16px;
+}
+.reviewer_rating {
   font-size: 14px;
   font-weight: 500;
   line-height: 1.29;
   position: relative;
-}
-.rating::before {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  background-size: contain;
-  background-image: url("../../img/sprite.svg#icon-star");
-  top: 0;
-  left: -8px;
-}
-.text {
-  font-weight: 500;
 }

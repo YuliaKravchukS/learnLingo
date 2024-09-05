@@ -2,6 +2,8 @@ import React from "react";
 import DocumentTitle from "../../components/DocumentTitle";
 import { Link } from "react-router-dom";
 import css from "./Home.module.css";
+import redGirl1x from "../../img/redGirl.png";
+import redGirl2x from "../../img/redGirl2.png";
 
 const Home: React.FC = () => {
   return (
@@ -25,8 +27,8 @@ const Home: React.FC = () => {
 
           <img
             className='css.img'
-            src='../../img/redGirl.png'
-            // srcSet='./assets/redGirl.png 1x, ./assets/redGirl2.png 2x'
+            src={redGirl1x}
+            srcSet={`${redGirl1x} 1x, ${redGirl2x} 2x`}
             alt='Drawn red-haired girl with a laptop'
           />
         </div>

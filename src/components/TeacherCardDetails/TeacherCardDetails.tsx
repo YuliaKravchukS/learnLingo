@@ -6,6 +6,7 @@ import Button from "../../ui/Button/Button";
 import BookForm from "../BookForm/BookForm";
 import { TeacherCardProp } from "../../types/indexTypes";
 import css from "./TeacherCardDetails.module.css";
+import avatarReviewer from "../../img/avatar.png";
 
 const TeacherCardDetails: React.FC<TeacherCardProp> = ({ teacher }) => {
   const {
@@ -49,19 +50,21 @@ const TeacherCardDetails: React.FC<TeacherCardProp> = ({ teacher }) => {
                 <svg className={css.icon}>
                   <use href={`${icons}#icon-book-open`} />
                 </svg>
-                <p className={css.text}>Lessons online</p>
+                <p className={css.InfoText}>Lessons online</p>
               </li>
               <li className={css.commonInfoItem}>
-                <p className={css.text}>{`Lessons done: ${lessons_done}`}</p>
+                <p
+                  className={css.InfoText}
+                >{`Lessons done: ${lessons_done}`}</p>
               </li>
               <li className={css.commonInfoItem}>
                 <svg className={css.icon}>
                   <use href={`${icons}#icon-star`} />
                 </svg>
-                <p className={css.text}>{`Rating: ${rating}`}</p>
+                <p className={css.InfoText}>{`Rating: ${rating}`}</p>
               </li>
               <li className={css.commonInfoItem}>
-                <p className={css.text}>
+                <p className={css.InfoText}>
                   Price / 1 hour:{" "}
                   <span className={css.price}>{`${price_per_hour}$`}</span>
                 </p>
@@ -89,7 +92,7 @@ const TeacherCardDetails: React.FC<TeacherCardProp> = ({ teacher }) => {
         </p>
 
         <div className={css.hidden}>
-          <p>{experience}</p>
+          <p className={css.experience}>{experience}</p>
           <ul className={css.reviewsList}>
             {reviews &&
               reviews.map((review, idx) => (
@@ -97,13 +100,13 @@ const TeacherCardDetails: React.FC<TeacherCardProp> = ({ teacher }) => {
                   <div className={css.reviewer}>
                     <img
                       className={css.avatarReviewer}
-                      src=''
+                      src={avatarReviewer}
                       alt={`Photo ${review.reviewer_name}`}
                     />
                     <div>
                       <p className={css.name}>{review.reviewer_name}</p>
                       <p className={css.reviewer_rating}>
-                        {review.reviewer_rating}
+                        {review.reviewer_rating.toFixed(1)}
                       </p>
                     </div>
                   </div>
