@@ -3,7 +3,7 @@
 }
 
 .hidden {
-  /* display: none; */
+  display: none;
 }
 .mainInfo {
   display: flex;
@@ -12,6 +12,8 @@
   width: 1184px;
   min-height: 328px;
   margin: 0 auto;
+  background-color: #fff;
+  border-radius: 24px;
 }
 .avatar {
   border-radius: 50%;
@@ -62,7 +64,6 @@
   display: flex;
   gap: 8px;
   align-items: center;
-  /* justify-content: center; */
   height: 24px;
   font-weight: 500;
 }
@@ -86,6 +87,10 @@
 .text:last-of-type {
   margin-bottom: 16px;
 }
+.btnHeart:hover,
+.btnHeart:focus {
+  background-color: transparent;
+}
 .icon {
   width: 16px;
   height: 16px;
@@ -93,6 +98,12 @@
   stroke: #121417;
 }
 
+.iconClicked {
+  fill: #f4c550;
+  stroke: none;
+  width: 16px;
+  height: 16px;
+}
 .experience {
   margin-bottom: 32px;
 }
@@ -131,6 +142,11 @@
 .reviewer {
   width: 100px;
   margin-bottom: 16px;
+}
+.reviewer_ratingStar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .reviewer_rating {
   font-size: 14px;

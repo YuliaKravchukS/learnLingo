@@ -37,7 +37,7 @@ const schema = yup.object().shape({
 });
 type FormData = yup.InferType<typeof schema>;
 
-const BookForm = ({ closeModal, state }: FormProp) => {
+const BookForm = ({ teacher, closeModal, state }: FormProp) => {
   const {
     register,
     handleSubmit,
@@ -49,7 +49,7 @@ const BookForm = ({ closeModal, state }: FormProp) => {
   const onSubmit = (data: FormData) => console.log(data);
   return (
     <ReactModal isOpen={state} onRequestClose={closeModal} style={customStyles}>
-      <div className={css.overlay}>
+      <div className={css.overlayForm}>
         <button className={css.btnClose} onClick={closeModal}>
           <svg className={css.icon}>
             <use href={`${icons}#icon-x`} />
@@ -60,19 +60,24 @@ const BookForm = ({ closeModal, state }: FormProp) => {
           Our experienced tutor will assess your current language level, discuss
           your learning goals, and tailor the lesson to your specific needs.
         </p>
-        <div>
-          <img src='' alt='' />
+        <div className={css.teacher}>
+          <img
+            className={css.imgAvatar}
+            src={teacher.avatar_url}
+            alt={teacher.name}
+          />
           <div>
-            <p>Your teacher</p>
-            <p>name</p>
+            <p className={css.teacherText}>Your teacher</p>
+            <p
+              className={css.teacherName}
+            >{`${teacher.name} ${teacher.surname}`}</p>
           </div>
         </div>
-        <p></p>
 
         <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
           <fieldset className={css.fieldset}>
             <legend>What is your main reason for learning English?</legend>
-            <div className={css.radio}>
+            <label className={css.labelRadio} htmlFor='field-career'>
               <input
                 {...register("reason")}
                 type='radio'
@@ -80,11 +85,10 @@ const BookForm = ({ closeModal, state }: FormProp) => {
                 id='field-career'
                 className={css.inputRadio}
               />
-              <label className={css.labelRadio} htmlFor='field-career'>
-                Career and business
-              </label>
-            </div>
-            <div className={css.radio}>
+              <span className={css.customRadioBox}></span>
+              Career and business
+            </label>
+            <label className={css.labelRadio} htmlFor='field-forKids'>
               <input
                 {...register("reason")}
                 type='radio'
@@ -92,11 +96,10 @@ const BookForm = ({ closeModal, state }: FormProp) => {
                 id='field-forKids'
                 className={css.inputRadio}
               />
-              <label className={css.labelRadio} htmlFor='field-forKids'>
-                Lesson for kids
-              </label>
-            </div>
-            <div className={css.radio}>
+              <span className={css.customRadioBox}></span>
+              Lesson for kids
+            </label>
+            <label className={css.labelRadio} htmlFor='field-abroad'>
               <input
                 {...register("reason")}
                 type='radio'
@@ -104,11 +107,10 @@ const BookForm = ({ closeModal, state }: FormProp) => {
                 id='field-abroad'
                 className={css.inputRadio}
               />
-              <label className={css.labelRadio} htmlFor='field-abroad'>
-                Living abroad
-              </label>
-            </div>
-            <div className={css.radio}>
+              <span className={css.customRadioBox}></span>
+              Living abroad
+            </label>
+            <label className={css.labelRadio} htmlFor='field-exams'>
               <input
                 {...register("reason")}
                 type='radio'
@@ -116,11 +118,10 @@ const BookForm = ({ closeModal, state }: FormProp) => {
                 id='field-exams'
                 className={css.inputRadio}
               />
-              <label className={css.labelRadio} htmlFor='field-exams'>
-                Exams and coursework
-              </label>
-            </div>
-            <div className={css.radio}>
+              <span className={css.customRadioBox}></span>
+              Exams and coursework
+            </label>
+            <label className={css.labelRadio} htmlFor='field-hobby'>
               <input
                 {...register("reason")}
                 type='radio'
@@ -128,13 +129,12 @@ const BookForm = ({ closeModal, state }: FormProp) => {
                 id='field-hobby'
                 className={css.inputRadio}
               />
-              <label className={css.labelRadio} htmlFor='field-hobby'>
-                Culture, travel or hobby
-              </label>
-            </div>
+              <span className={css.customRadioBox}></span>
+              Culture, travel or hobby
+            </label>
           </fieldset>
 
-          <div>
+          <div className={css.errorWrap}>
             <input
               {...register("name", { required: true, minLength: 3 })}
               placeholder='Full name'
@@ -142,7 +142,7 @@ const BookForm = ({ closeModal, state }: FormProp) => {
             />
             {errors.name && <p className={css.error}>{errors.name.message}</p>}
           </div>
-          <div>
+          <div className={css.errorWrap}>
             <input
               {...register("email", { required: true, minLength: 8 })}
               placeholder='Email'
@@ -152,7 +152,7 @@ const BookForm = ({ closeModal, state }: FormProp) => {
               <p className={css.error}>{errors.email.message}</p>
             )}
           </div>
-          <div className={css.numberInput}>
+          <div className={css.errorWrap}>
             <input
               {...register("tel", { min: 10, max: 13 })}
               placeholder='Phone number'

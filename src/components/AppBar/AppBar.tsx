@@ -1,4 +1,3 @@
-import React from "react";
 import icons from "../../img/sprite.svg";
 import css from "./AppBar.module.css";
 import Navigation from "../Navigation/Navigation";
@@ -7,7 +6,7 @@ import AuthMenu from "../AuthMenu/AuthMenu";
 import { useAuth } from "../../context/auth-context";
 
 const AppBar = () => {
-  const { loading } = useAuth();
+  const { user } = useAuth();
 
   return (
     <section className='container'>
@@ -24,7 +23,7 @@ const AppBar = () => {
           <Navigation />
         </div>
 
-        {loading ? <UserMenu /> : <AuthMenu />}
+        {user ? <UserMenu /> : <AuthMenu />}
       </div>
     </section>
   );

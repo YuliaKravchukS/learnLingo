@@ -13,6 +13,7 @@ export interface BtnProp {
 }
 
 export interface FormProp {
+  teacher: dataProp;
   state: boolean;
   closeModal: () => void;
 }
@@ -34,12 +35,18 @@ export interface IAuth {
   signIn: (creds: LoginFormValues) => void;
   signUp: (creds: UserFormValues) => void;
   signOut: () => void;
-  db: () => Promise<ApiProp>;
+  db: (
+    lastVisibleKey?: string,
+    language?: string,
+    levels?: string,
+    price?: string
+  ) => Promise<ApiProp>;
 }
 
 export type ApiProp = dataProp[];
 
 export interface dataProp {
+  id: string;
   name: string | undefined;
   surname: string;
   languages: string[];
@@ -62,4 +69,18 @@ interface Review {
 
 export interface TeacherCardProp {
   teacher: dataProp;
+}
+
+export interface FilterBarProp {
+  onChangeFilters: (filters: FilterValueProp) => void;
+}
+
+export interface FilterValueProp {
+  language: string;
+  levels: string;
+  price: string;
+}
+
+export interface TeachersListProp {
+  filters: FilterValueProp;
 }

@@ -1,10 +1,8 @@
-import React from "react";
 import Button from "../../ui/Button/Button";
 import { useAuth } from "../../context/auth-context";
 
 const UserMenu = () => {
   const { user, signOut } = useAuth();
-  console.log("user: ", user);
 
   return (
     <div>

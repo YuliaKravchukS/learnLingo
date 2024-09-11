@@ -1,8 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import css from "./Navigation.module.css";
+import { useAuth } from "../../context/auth-context";
 
 const Navigation = () => {
+  const { user } = useAuth();
   return (
     <nav>
       <ul className={css.list}>
@@ -16,10 +18,13 @@ const Navigation = () => {
             Teachers
           </NavLink>
         </li>
-        {/* {isLogined ?
-            <li> <NavLink className={css.link} to='/favorites'>
+        {user && (
+          <li>
+            <NavLink className={css.link} to='/favorites'>
               Favorites
-            </NavLink></li>} */}
+            </NavLink>
+          </li>
+        )}
       </ul>
     </nav>
   );

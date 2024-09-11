@@ -15,8 +15,16 @@ import {
   firebaseSignOut,
   firebaseSignUp,
 } from "../firebase/firebase";
-import toast, { Toaster } from "react-hot-toast";
-import { child, get, getDatabase, ref } from "firebase/database";
+import toast from "react-hot-toast";
+import {
+  get,
+  getDatabase,
+  limitToFirst,
+  orderByKey,
+  query,
+  ref,
+  startAfter,
+} from "firebase/database";
 
 export const AuthContext = createContext<IAuth>({
   user: firebaseAuth.currentUser,
@@ -35,81 +43,73 @@ export const AuthProvider = ({ children }: Props) => {
 
   const signIn = async (creds: LoginFormValues) => {
     setIsLoading(true);
-    await firebaseSignIn(creds)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        setCurrentUser(user);
-        navigate("/teachers", { replace: true });
-      })
-      .catch((error) => {
-        toast.error(error.message);
-        <Toaster
-          position='bottom-left'
-          reverseOrder={false}
-          toastOptions={{
-            duration: 3000,
-            style: {
-              background: "#363636",
-              color: "#fff",
-            },
-            error: {
-              duration: 3000,
-            },
-          }}
-        />;
-
-        setIsLoading(false);
-      });
+    try {
+      const userCredential = await firebaseSignIn(creds);
+      const user = userCredential.user;
+      setCurrentUser(user);
+      navigate("/teachers", { replace: true });
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
+
   const signUp = async (creds: UserFormValues) => {
     setIsLoading(true);
-    await firebaseSignUp(creds)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log("user: ", user);
-
-        setCurrentUser(user);
-        navigate("/teachers");
-      })
-      .catch((error) => {
-        toast.error(error.message);
-        <Toaster
-          position='bottom-left'
-          reverseOrder={false}
-          toastOptions={{
-            duration: 3000,
-            style: {
-              background: "#363636",
-              color: "#fff",
-            },
-            error: {
-              duration: 3000,
-            },
-          }}
-        />;
-
-        setIsLoading(false);
-      });
-  };
-  const signOut = async () => {
-    setIsLoading(false);
-    await firebaseSignOut()
-      .then(() => {
-        setCurrentUser(null);
-        navigate("/", { replace: true });
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        toast.error(error.message);
-      });
-  };
-
-  const dbRef = ref(getDatabase());
-  const db = async (): Promise<ApiProp> => {
     try {
-      const snapshot = await get(child(dbRef, "/"));
+      const userCredential = await firebaseSignUp(creds);
+      const user = userCredential.user;
+      setCurrentUser(user);
+      navigate("/teachers");
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const signOut = async () => {
+    setIsLoading(true);
+    try {
+      await firebaseSignOut();
+      setCurrentUser(null);
+      navigate("/", { replace: true });
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const db = async (lastVisibleKey: string): Promise<ApiProp> => {
+    try {
+      let queryRef;
+
+      if (lastVisibleKey) {
+        queryRef = query(
+          ref(getDatabase(), "teachers"),
+          orderByKey(),
+          startAfter(lastVisibleKey),
+          limitToFirst(4)
+        );
+      } else {
+        queryRef = query(
+          ref(getDatabase(), "teachers"),
+          orderByKey(),
+          limitToFirst(4)
+        );
+      }
+
+      const snapshot = await get(queryRef);
       if (snapshot.exists()) {
-        const teachersData = snapshot.val() as ApiProp;
+        const teachersData = Object.entries(snapshot.val()).map(
+          ([key, value]) => ({
+            id: key,
+            ...value,
+          })
+        );
+
         return teachersData;
       } else {
         console.log("No data available");
@@ -120,6 +120,7 @@ export const AuthProvider = ({ children }: Props) => {
       throw new Error("Failed to fetch data");
     }
   };
+
   const value: IAuth = {
     user: currentUser,
     loading: isLoading,
@@ -134,6 +135,7 @@ export const AuthProvider = ({ children }: Props) => {
       setCurrentUser(user);
       setIsAuthLoading(false);
     });
+
     return unsubscribe;
   }, []);
 

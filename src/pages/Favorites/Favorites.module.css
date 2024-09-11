@@ -1,0 +1,19 @@
+.alternativeText {
+  font-size: 26px;
+  width: 700px;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 40px;
+  color: #f4c550;
+}
+.link {
+  text-decoration: underline;
+  background-color: transparent;
+  color: #f3ae02;
+}
+
+.link:hover,
+.link:focus {
+  background-color: transparent;
+  color: blue;
+}

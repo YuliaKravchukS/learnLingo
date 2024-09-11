@@ -4,7 +4,6 @@
   font-weight: 400;
   font-size: 16px;
   color: #121417;
-  background-color: #fff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -39,6 +38,7 @@ body {
   max-width: 1440px;
   min-height: 100vh;
   margin: 0 auto;
+  background-color: #f8f8f8;
 }
 .container {
   width: 1440px;
