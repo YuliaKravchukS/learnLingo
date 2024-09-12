@@ -58,7 +58,6 @@ const RegisterForm = ({ closeModal, state }: FormProp) => {
 
   const onSubmit = (data: FormData) => {
     signUp(data);
-    console.log("data: ", data);
     closeModal();
   };
   return (
@@ -77,7 +76,7 @@ const RegisterForm = ({ closeModal, state }: FormProp) => {
         </p>
 
         <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-          <div>
+          <div className={css.errorWrap}>
             <input
               type='text'
               {...register("displayName", { required: true, minLength: 3 })}
@@ -88,7 +87,7 @@ const RegisterForm = ({ closeModal, state }: FormProp) => {
               <p className={css.error}>{errors.displayName.message}</p>
             )}
           </div>
-          <div>
+          <div className={css.errorWrap}>
             <input
               type='email'
               {...register("email", { required: true, minLength: 8 })}
@@ -99,7 +98,7 @@ const RegisterForm = ({ closeModal, state }: FormProp) => {
               <p className={css.error}>{errors.email.message}</p>
             )}
           </div>
-          <div className={css.passwordInput}>
+          <div className={css.errorWrap}>
             <input
               type={showPassword ? "text" : "password"}
               {...register("password", { min: 8 })}

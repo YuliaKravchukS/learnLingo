@@ -32,8 +32,6 @@
   border-radius: 12px;
   border: 1px solid rgba(18, 20, 23, 0.1);
   width: 100%;
-  margin-bottom: 18px;
-  position: relative;
 }
 
 .input::placeholder {
@@ -51,12 +49,7 @@
   font-weight: 700;
   line-height: 1.56;
 }
-.passwordInput {
-  position: relative;
-}
-.passwordInput > input {
-  margin-bottom: 40px;
-}
+
 .iconEye {
   fill: none;
   stroke: #121417;
@@ -65,10 +58,18 @@
   right: 18px;
   height: 20px;
 }
+.errorWrap:not(:last-of-type) {
+  position: relative;
+  margin-bottom: 18px;
+}
+.errorWrap:last-of-type {
+  margin-bottom: 40px;
+  position: relative;
+}
 .error {
   color: rgb(232, 89, 89);
   font-size: 12px;
   position: absolute;
-  left: 82px;
-  bottom: -3px;
+  left: 18px;
+  bottom: -18px;
 }

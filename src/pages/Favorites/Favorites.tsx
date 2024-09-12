@@ -6,6 +6,7 @@ import TeacherCardDetails from "../../components/TeacherCardDetails/TeacherCardD
 import { useAuth } from "../../context/auth-context";
 import { ApiProp } from "../../types/indexTypes";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Favorites = () => {
   const [teachers, setTeachers] = useState<ApiProp>([]);
@@ -18,12 +19,10 @@ const Favorites = () => {
       .then((snapshot) => {
         if (snapshot.exists()) {
           setTeachers(Object.values(snapshot.val()));
-        } else {
-          console.log("No data available");
         }
       })
       .catch((error) => {
-        console.error(error);
+        toast.error(error.message);
       });
   }, [userId]);
 

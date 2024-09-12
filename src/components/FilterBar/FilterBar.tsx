@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { FilterBarProp } from "../../types/indexTypes";
+import css from "./FilterBar.module.css";
 
 const FilterBar: React.FC<FilterBarProp> = ({ onChangeFilters }) => {
   const { register, watch } = useForm();
@@ -17,21 +18,28 @@ const FilterBar: React.FC<FilterBarProp> = ({ onChangeFilters }) => {
   }, [onChangeFilters, selectedLanguage, selectedLevels, selectedPrice]);
 
   return (
-    <section>
-      <form>
-        <label htmlFor='languages'>
+    <section className='container '>
+      <form className={css.form}>
+        <label className={css.label} htmlFor='languages'>
           Languages
-          <select {...register("languages", { required: true })}>
+          <select
+            className={css.select}
+            {...register("languages", { required: true })}
+          >
             <option value='French'>French</option>
             <option value='English'>English</option>
             <option value='German'>German</option>
             <option value='Ukrainian'>Ukrainian</option>
             <option value='Polish'>Polish</option>
           </select>
+          <div className={css.selectArrow}></div>
         </label>
-        <label htmlFor='level'>
+        <label className={css.label} htmlFor='level'>
           Level of knowledge
-          <select {...register("levels", { required: true })}>
+          <select
+            className={css.select}
+            {...register("levels", { required: true })}
+          >
             <option value='A1 Beginner'>A1 Beginner</option>
             <option value='A2 Elementary'>A2 Elementary</option>
             <option value='B1 Intermediate'>B1 Intermediate</option>
@@ -40,9 +48,12 @@ const FilterBar: React.FC<FilterBarProp> = ({ onChangeFilters }) => {
             <option value='C2 Proficient'>C2 Proficient</option>
           </select>
         </label>
-        <label htmlFor='price'>
+        <label className={css.label} htmlFor='price'>
           Price
-          <select {...register("price", { required: true })}>
+          <select
+            className={css.select}
+            {...register("price", { required: true })}
+          >
             <option value='10'>10</option>
             <option value='20'>20</option>
             <option value='30'>30</option>

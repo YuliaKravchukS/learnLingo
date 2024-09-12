@@ -8,10 +8,9 @@ import css from "./TeachersList.module.css";
 const TeachersList: React.FC<TeachersListProp> = ({ filters }) => {
   const { db } = useAuth();
   const [teachers, setTeachers] = useState<ApiProp>([]);
-  console.log("teachers: ", teachers);
+
   const [lastVisibleKey, setLastVisibleKey] = useState<string | null>(null);
   const { language, levels, price } = filters;
-  console.log("language, levels, price: ", language, levels, price);
 
   useEffect(() => {
     const fetchTeachers = async () => {

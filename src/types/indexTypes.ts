@@ -35,12 +35,7 @@ export interface IAuth {
   signIn: (creds: LoginFormValues) => void;
   signUp: (creds: UserFormValues) => void;
   signOut: () => void;
-  db: (
-    lastVisibleKey?: string,
-    language?: string,
-    levels?: string,
-    price?: string
-  ) => Promise<ApiProp>;
+  db: (lastVisibleKey?: string) => Promise<ApiProp>;
 }
 
 export type ApiProp = dataProp[];

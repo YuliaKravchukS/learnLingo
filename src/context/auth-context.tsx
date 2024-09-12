@@ -82,7 +82,7 @@ export const AuthProvider = ({ children }: Props) => {
     }
   };
 
-  const db = async (lastVisibleKey: string): Promise<ApiProp> => {
+  const db = async (lastVisibleKey?: string): Promise<ApiProp> => {
     try {
       let queryRef;
 
@@ -112,12 +112,11 @@ export const AuthProvider = ({ children }: Props) => {
 
         return teachersData;
       } else {
-        console.log("No data available");
+        toast.error("No data available");
         return [];
       }
     } catch (error) {
-      console.error(error);
-      throw new Error("Failed to fetch data");
+      toast.error("Failed to fetch data");
     }
   };
 

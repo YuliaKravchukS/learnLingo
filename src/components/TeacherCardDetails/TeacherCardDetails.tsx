@@ -10,7 +10,7 @@ import avatarReviewer from "../../img/avatar.png";
 import { onValue, ref, remove, set } from "firebase/database";
 import { db } from "../../firebase/firebase-config";
 import { useAuth } from "../../context/auth-context";
-import { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const TeacherCardDetails: React.FC<TeacherCardProp> = ({ teacher }) => {
   const {
@@ -43,8 +43,9 @@ const TeacherCardDetails: React.FC<TeacherCardProp> = ({ teacher }) => {
   }, [userId, id]);
 
   const toggleFavorite = async () => {
-    if (user === null) {
-      return <Toaster position='top-right' reverseOrder={false} />;
+    if (!user) {
+      toast.error("Please sign up or log in to add items to your favorites.");
+      return;
     } else {
       const favoritesRef = ref(db, `/users/${userId}/favorites/${id}`);
       if (isFavorites) {
