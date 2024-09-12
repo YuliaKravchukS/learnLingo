@@ -1,34 +1,60 @@
 .AppBar {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 64px;
+  padding: 0 14px;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .leftAppBar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 661px;
 }
 .wrapLogo {
   display: flex;
   gap: 8px;
   justify-content: center;
   align-items: center;
-  width: 133px;
 }
 .logo {
-  width: 32px;
-  height: 32px;
+  width: 20px;
+  height: 20px;
 }
 .icon {
-  width: 32px;
-  height: 32px;
+  width: 20px;
+  height: 20px;
 }
 .wrapLogo p {
-  font-size: 20px;
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.4px;
+}
+
+@media screen and (min-width: 768px) {
+}
+@media screen and (min-width: 1440px) {
+  .AppBar {
+    padding: 0 64px;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  .leftAppBar {
+    width: 661px;
+  }
+  .wrapLogo {
+    width: 133px;
+  }
+  .logo {
+    width: 32px;
+    height: 32px;
+  }
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+  .wrapLogo p {
+    font-size: 20px;
+  }
 }

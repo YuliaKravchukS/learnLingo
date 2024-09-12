@@ -1,19 +1,32 @@
 .list {
   display: flex;
-  gap: 8px;
+  flex-wrap: wrap;
+  gap: 6px;
   margin-bottom: 32px;
+  width: 250px;
 }
 .item {
   display: flex;
-  padding: 8px 12px;
+  padding: 8px;
   justify-content: center;
   align-items: center;
   gap: 4px;
   border-radius: 35px;
   border: 1px solid rgba(18, 20, 23, 0.2);
+  font-size: 12px;
 }
 
 .activeFilter {
   background-color: #f4c550;
   border: none;
+}
+
+@media screen and (min-width: 768px) {
+  .list {
+    gap: 8px;
+    width: 718px;
+  }
+  .item {
+    padding: 8px 12px;
+  }
 }

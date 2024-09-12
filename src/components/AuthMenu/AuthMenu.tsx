@@ -23,8 +23,8 @@ const AuthMenu = () => {
     setIsOpenRegistration(false);
   };
   return (
-    <div className={`flexWrap ${css.authMenu}`}>
-      <div className={`flexWrap ${css.logInWrap}`}>
+    <div className={css.authMenu}>
+      <div className={css.logInWrap}>
         <svg className={css.icon}>
           <use href={`${icons}#icon-log-in`} />
         </svg>

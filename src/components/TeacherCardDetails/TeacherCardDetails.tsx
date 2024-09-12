@@ -72,6 +72,7 @@ const TeacherCardDetails: React.FC<TeacherCardProp> = ({ teacher }) => {
       <div className={css.avatarBorder}>
         <img className={css.avatar} src={avatar_url} alt={name} />
       </div>
+
       <div className={css.wrapInfo}>
         <div className={css.commonInfo}>
           <div className={css.commonInfoRight}>

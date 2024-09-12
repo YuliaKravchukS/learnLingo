@@ -1,7 +1,59 @@
-.list {
+.hidden {
+  display: none;
+}
+.deskNavigation {
+  display: none;
+}
+.overlayMenu {
+  position: relative;
+  transition: all 1s ease-in;
+}
+.mobMenu {
+  position: absolute;
+  padding: 20px;
+  right: -10px;
+  background-color: #fbe9ba;
+  border-radius: 12px;
+  opacity: 1;
+}
+
+.btnClose {
+  width: 24px;
+  height: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 28px;
-  line-height: 1.25;
+  position: absolute;
+  right: 5px;
+  top: 0;
+}
+.icon {
+  width: 24px;
+  height: 24px;
+  stroke: black;
+}
+
+@media screen and (min-width: 768px) {
+  .mobMenu {
+    padding: 20px 30px;
+  }
+
+  .btnClose {
+    right: 8px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .btnOpen {
+    display: none;
+  }
+  .deskNavigation {
+    display: block;
+  }
+  .list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    line-height: 1.25;
+  }
 }

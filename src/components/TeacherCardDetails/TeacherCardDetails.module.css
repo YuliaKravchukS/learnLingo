@@ -7,23 +7,25 @@
 }
 .mainInfo {
   display: flex;
-  gap: 48px;
-  padding: 24px;
-  width: 1184px;
+  flex-direction: column;
+  gap: 24px;
+  padding: 14px;
+  width: 270px;
   min-height: 328px;
   margin: 0 auto;
   background-color: #fff;
   border-radius: 24px;
+  position: relative;
 }
 .avatar {
   border-radius: 50%;
-  width: 96px;
-  height: 96px;
+  width: 48px;
+  height: 48px;
 }
 
 .avatarBorder {
-  width: 120px;
-  height: 120px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   border: 3px solid #fbe9ba;
   background: #fff;
@@ -31,13 +33,13 @@
   align-items: center;
   justify-content: center;
 }
-.wrapInfo {
-  width: 968px;
-}
 .commonInfo {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   margin-bottom: 32px;
+}
+.commonInfoRight {
+  margin-bottom: 24px;
 }
 .commonInfoRight p:first-of-type {
   color: #8a8a89;
@@ -45,33 +47,25 @@
   margin-bottom: 8px;
 }
 .commonInfoRight p:last-of-type {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 500;
   line-height: 1;
 }
 
 .commonInfoLeft {
   display: flex;
-  gap: 64px;
+  gap: 24px;
 }
 .commonInfoList {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
 }
 .commonInfoItem {
-  padding: 0 16px;
   display: flex;
   gap: 8px;
   align-items: center;
   height: 24px;
   font-weight: 500;
-}
-.commonInfoItem:last-of-type {
-  padding-right: 0;
-}
-.commonInfoItem:first-of-type {
-  padding-left: 0;
 }
 .text {
   font-weight: 500;
@@ -86,6 +80,11 @@
 }
 .text:last-of-type {
   margin-bottom: 16px;
+}
+.btnHeart {
+  position: absolute;
+  top: 20px;
+  right: 14px;
 }
 .btnHeart:hover,
 .btnHeart:focus {
@@ -153,4 +152,89 @@
   font-weight: 500;
   line-height: 1.29;
   position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .mainInfo {
+    width: 718px;
+  }
+  .avatar {
+    border-radius: 50%;
+    width: 72px;
+    height: 72px;
+  }
+
+  .avatarBorder {
+    width: 90px;
+    height: 90px;
+  }
+  .commonInfoList {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .mainInfo {
+    flex-direction: row;
+    gap: 48px;
+    padding: 24px;
+    width: 1184px;
+    position: static;
+  }
+  .avatar {
+    width: 96px;
+    height: 96px;
+  }
+
+  .avatarBorder {
+    width: 120px;
+    height: 120px;
+  }
+  .wrapInfo {
+    width: 968px;
+  }
+  .commonInfo {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .commonInfoRight {
+    margin-bottom: 0;
+  }
+
+  .commonInfoRight p:last-of-type {
+    font-size: 24px;
+  }
+
+  .commonInfoLeft {
+    gap: 64px;
+  }
+  .commonInfoList {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .commonInfoItem {
+    padding: 0 16px;
+  }
+  .commonInfoItem:last-of-type {
+    padding-right: 0;
+  }
+  .commonInfoItem:first-of-type {
+    padding-left: 0;
+  }
+  .btnHeart {
+    position: static;
+  }
+  .reviewsList {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .reviewsList {
+    gap: 16px;
+    margin-bottom: 16px;
+  }
 }

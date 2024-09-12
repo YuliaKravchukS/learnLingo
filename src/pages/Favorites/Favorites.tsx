@@ -29,7 +29,7 @@ const Favorites = () => {
   return (
     <>
       <DocumentTitle>Favorites</DocumentTitle>
-      <section className='container'>
+      <section className={`container ${css.favorite}`}>
         <ul className={css.list}>
           {teachers.length > 0 ? (
             teachers.map((teacher, idx) => (

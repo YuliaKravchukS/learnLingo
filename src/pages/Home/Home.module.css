@@ -1,16 +1,16 @@
 .hero {
   gap: 24px;
-  height: 530px;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   justify-content: space-between;
 }
 .heroText {
-  padding: 98px 64px;
+  padding: 48px 37px;
   border-radius: 30px;
-  background: #f8f8f8;
+  background-color: #f8f8f8;
+  order: 2;
 }
 .heroText h1 {
-  font-size: 48px;
+  font-size: 24px;
   font-weight: 500;
   line-height: 1.16;
   letter-spacing: -0.96px;
@@ -28,7 +28,7 @@
   line-height: 1.37;
   letter-spacing: -0.32px;
   max-width: 470px;
-  margin-bottom: 64px;
+  margin-bottom: 32px;
 }
 
 .link {
@@ -46,25 +46,100 @@
 .img {
   width: 568px;
   height: 530px;
+  order: 1;
 }
 .list {
   border-radius: 30px;
   border: 1.5px dashed #f4c550;
-  /* width: 100%; */
-  padding: 40px 122px;
-  gap: 100px;
+  padding: 20px 14px;
+  gap: 8px;
+  row-gap: 14px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  display: flex;
 }
+
 .item {
-  gap: 16px;
-  font-size: 28px;
+  gap: 6px;
   font-weight: 500;
+  font-size: 14px;
   line-height: 1.14;
   letter-spacing: -0.56px;
+  width: calc((100% - 8px) / 2);
 }
 
 .item p:last-of-type {
   color: rgba(18, 20, 23, 0.7);
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.29;
   letter-spacing: -0.28px;
+}
+
+@media screen and (min-width: 1440px) {
+  .hero {
+    gap: 24px;
+    height: 530px;
+    margin-bottom: 24px;
+    justify-content: space-between;
+  }
+
+  .heroText {
+    padding: 98px 64px;
+    border-radius: 30px;
+    order: 1;
+  }
+  .heroText h1 {
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 1.16;
+    letter-spacing: -0.96px;
+    margin-bottom: 32px;
+    max-width: 548px;
+  }
+
+  .heroText h1 > span {
+    font-style: italic;
+    font-weight: 400;
+    background-color: #fbe9ba;
+  }
+
+  .heroText p {
+    line-height: 1.37;
+    letter-spacing: -0.32px;
+    max-width: 470px;
+    margin-bottom: 64px;
+  }
+
+  .link {
+    border-radius: 12px;
+    background: #f4c550;
+    display: inline-flex;
+    padding: 16px 88px;
+    justify-content: center;
+    align-items: center;
+    color: #121417;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.56;
+  }
+  .img {
+    width: 568px;
+    height: 530px;
+    order: 3;
+  }
+  .list {
+    padding: 40px 121px;
+    gap: 100px;
+    flex-wrap: nowrap;
+  }
+  .item {
+    gap: 16px;
+    font-size: 28px;
+    width: calc((100% - 285px) / 4);
+  }
+
+  .item p:last-of-type {
+    font-size: 14px;
+    width: 74px;
+  }
 }

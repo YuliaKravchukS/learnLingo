@@ -38,18 +38,33 @@ body {
   max-width: 1440px;
   min-height: 100vh;
   margin: 0 auto;
-  background-color: #f8f8f8;
+  background-color: #fff;
 }
 .container {
-  width: 1440px;
-  min-width: 320px;
-  padding: 20px 64px 32px;
+  width: 320px;
+  padding: 20px;
   margin: 0 auto;
 }
+
 .flexWrap {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .container {
+    width: 1440px;
+    padding: 20px 64px 32px;
+  }
+  .flexWrap {
+    flex-direction: row;
+  }
 }
 
 button {

@@ -13,7 +13,7 @@ export interface BtnProp {
 }
 
 export interface FormProp {
-  teacher: dataProp;
+  teacher?: dataProp;
   state: boolean;
   closeModal: () => void;
 }

@@ -1,32 +1,84 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import css from "./Navigation.module.css";
 import { useAuth } from "../../context/auth-context";
+import icons from "../../img/sprite.svg";
 
 const Navigation = () => {
+  const [openMenu, setOpenMenu] = useState<boolean>(false);
+
   const { user } = useAuth();
+
   return (
-    <nav>
-      <ul className={css.list}>
-        <li>
-          <NavLink className={css.link} to='/'>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className={css.link} to='/teachers'>
-            Teachers
-          </NavLink>
-        </li>
-        {user && (
+    <div>
+      <nav className={css.deskNavigation}>
+        <ul className={css.list}>
           <li>
-            <NavLink className={css.link} to='/favorites'>
-              Favorites
+            <NavLink className={css.link} to='/'>
+              Home
             </NavLink>
           </li>
-        )}
-      </ul>
-    </nav>
+          <li>
+            <NavLink className={css.link} to='/teachers'>
+              Teachers
+            </NavLink>
+          </li>
+          {user && (
+            <li>
+              <NavLink className={css.link} to='/favorites'>
+                Favorites
+              </NavLink>
+            </li>
+          )}
+        </ul>
+      </nav>
+      <button
+        className={openMenu ? css.hidden : css.btnOpen}
+        onClick={() => {
+          setOpenMenu(true);
+        }}
+      >
+        Menu
+      </button>
+
+      {openMenu && (
+        <div className={css.overlayMenu}>
+          <div className={css.mobMenu}>
+            <button
+              className={css.btnClose}
+              onClick={() => {
+                setOpenMenu(false);
+              }}
+            >
+              <svg className={css.icon}>
+                <use href={`${icons}#icon-x`} />
+              </svg>
+            </button>
+            <nav>
+              <ul className={css.listMenu}>
+                <li>
+                  <NavLink className={css.link} to='/'>
+                    Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className={css.link} to='/teachers'>
+                    Teachers
+                  </NavLink>
+                </li>
+                {user && (
+                  <li>
+                    <NavLink className={css.link} to='/favorites'>
+                      Favorites
+                    </NavLink>
+                  </li>
+                )}
+              </ul>
+            </nav>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 

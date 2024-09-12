@@ -26,15 +26,15 @@ const Home: React.FC = () => {
           </div>
 
           <img
-            className='css.img'
+            className={css.img}
             src={redGirl1x}
             srcSet={`${redGirl1x} 1x, ${redGirl2x} 2x`}
             alt='Drawn red-haired girl with a laptop'
           />
         </div>
-        <ul className={`flexWrap ${css.list}`}>
+        <ul className={css.list}>
           <li className={`flexWrap ${css.item}`}>
-            <p> 32,000 +</p>
+            <p> 32,000+</p>
             <p>Experienced tutors</p>
           </li>
           <li className={`flexWrap ${css.item}`}>
