@@ -44,8 +44,7 @@
   line-height: 1.56;
 }
 .img {
-  width: 568px;
-  height: 530px;
+  max-height: 530px;
   order: 1;
 }
 .list {

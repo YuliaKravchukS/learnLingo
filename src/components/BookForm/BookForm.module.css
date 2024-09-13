@@ -1,14 +1,13 @@
 .overlayForm {
   border-radius: 30px;
   background: #fff;
-
-  padding: 64px;
+  padding: 24px;
   position: relative;
 }
 
 .icon {
-  width: 32px;
-  height: 32px;
+  width: 20px;
+  height: 20px;
   stroke: #121417;
   position: absolute;
   top: 20px;
@@ -139,4 +138,148 @@ input[type="radio"]:checked + .customRadioBox::before {
   position: absolute;
   left: 18px;
   bottom: -18px;
+}
+
+@media screen and (min-width: 768px) {
+  .overlayForm {
+    border-radius: 30px;
+    background: #fff;
+    padding: 64px;
+    position: relative;
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+    stroke: #121417;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  .overlayForm h2 {
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.8px;
+    margin-bottom: 20px;
+  }
+
+  .text {
+    color: rgba(18, 20, 23, 0.8);
+    line-height: 1.38;
+    margin-bottom: 40px;
+    width: 472px;
+  }
+  .teacher {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+  .imgAvatar {
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+  }
+  .teacherText {
+    color: #8a8a89;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.33;
+    margin-bottom: 4px;
+  }
+  .teacherName {
+    font-weight: 500;
+  }
+  .form {
+    width: 472px;
+  }
+  .fieldset {
+    border: none;
+    margin-bottom: 40px;
+    padding: 0;
+  }
+
+  legend {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.33;
+    margin-bottom: 20px;
+  }
+  .labelRadio {
+    display: block;
+  }
+  .inputRadio {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+    z-index: -1;
+  }
+  .customRadioBox {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    margin-right: 8px;
+    border: 2px solid #8a8a89;
+    display: inline-block;
+    position: relative;
+  }
+
+  input[type="radio"]:checked + .customRadioBox {
+    border: 2px solid #f4c550;
+  }
+  input[type="radio"]:checked + .customRadioBox::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #f4c550;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .input {
+    padding: 16px 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(18, 20, 23, 0.1);
+    width: 100%;
+  }
+
+  .input::placeholder {
+    color: #121417;
+    line-height: 1.38;
+  }
+
+  .form-input:checked {
+    outline: 2px solid #f4c550;
+    outline-offset: 2px;
+  }
+  .btnLogIn {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    background: #f4c550;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.56;
+  }
+
+  .errorWrap:not(:last-of-type) {
+    position: relative;
+    margin-bottom: 18px;
+  }
+  .errorWrap:last-of-type {
+    margin-bottom: 40px;
+    position: relative;
+  }
+  .error {
+    color: rgb(232, 89, 89);
+    font-size: 12px;
+    position: absolute;
+    left: 18px;
+    bottom: -18px;
+  }
 }

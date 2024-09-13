@@ -52,12 +52,14 @@ const TeachersList: React.FC<TeachersListProp> = ({ filters }) => {
             </li>
           ))}
       </ul>
-      <Button
-        className='loadMore'
-        type='button'
-        text='Load more'
-        cb={loadMoreTeachers}
-      />
+      {teachers.length > 0 && (
+        <Button
+          className='loadMore'
+          type='button'
+          text='Load more'
+          cb={loadMoreTeachers}
+        />
+      )}
     </div>
   );
 };

@@ -63,14 +63,14 @@ const BookForm = ({ teacher, closeModal, state }: FormProp) => {
         <div className={css.teacher}>
           <img
             className={css.imgAvatar}
-            src={teacher.avatar_url}
-            alt={teacher.name}
+            src={teacher?.avatar_url}
+            alt={teacher?.name}
           />
           <div>
             <p className={css.teacherText}>Your teacher</p>
             <p
               className={css.teacherName}
-            >{`${teacher.name} ${teacher.surname}`}</p>
+            >{`${teacher?.name} ${teacher?.surname}`}</p>
           </div>
         </div>
 

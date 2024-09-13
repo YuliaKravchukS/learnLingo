@@ -75,7 +75,7 @@ const LoginForm = ({ closeModal, state }: FormProp) => {
         </p>
 
         <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-          <div>
+          <div className={css.errorWrap}>
             <input
               {...register("email", { required: true, minLength: 8 })}
               placeholder='Email'
@@ -85,7 +85,7 @@ const LoginForm = ({ closeModal, state }: FormProp) => {
               <p className={css.error}>{errors.email.message}</p>
             )}
           </div>
-          <div className={css.passwordInput}>
+          <div className={css.errorWrap}>
             <input
               type={showPassword ? "text" : "password"}
               {...register("password", { min: 8 })}
