@@ -14,10 +14,13 @@ const customStyles = {
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
+    maxHeight: "90vh",
+    width: "90%",
     padding: "0",
     border: "none",
     borderRadius: "30px",
     transform: "translate(-50%, -50%)",
+    overflowY: "auto",
   },
   overlay: {
     backgroundColor: "rgba(0, 0, 0, 0.5)",
