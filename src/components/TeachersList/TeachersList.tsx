@@ -23,8 +23,8 @@ const TeachersList: React.FC<TeachersListProp> = ({ filters }) => {
 
   useEffect(() => {
     const filteredData = teachers
-      .filter((teacher) => teacher.languages.includes(language))
-      .filter((teacher) => teacher.levels.includes(levels))
+      .filter((teacher) => teacher.languages?.includes(language))
+      .filter((teacher) => teacher.levels?.includes(levels))
       .filter((teacher) => teacher.price_per_hour === Number(price));
 
     if (filteredData.length > 0) {
