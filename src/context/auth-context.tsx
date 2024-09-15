@@ -49,7 +49,8 @@ export const AuthProvider = ({ children }: Props) => {
       setCurrentUser(user);
       navigate("/teachers", { replace: true });
     } catch (error) {
-      toast.error(error.message);
+      const errorMessage = (error as Error).message;
+      toast.error(errorMessage);
     } finally {
       setIsLoading(false);
     }
@@ -63,7 +64,8 @@ export const AuthProvider = ({ children }: Props) => {
       setCurrentUser(user);
       navigate("/teachers");
     } catch (error) {
-      toast.error(error.message);
+      const errorMessage = (error as Error).message;
+      toast.error(errorMessage);
     } finally {
       setIsLoading(false);
     }
@@ -76,7 +78,8 @@ export const AuthProvider = ({ children }: Props) => {
       setCurrentUser(null);
       navigate("/", { replace: true });
     } catch (error) {
-      toast.error(error.message);
+      const errorMessage = (error as Error).message;
+      toast.error(errorMessage);
     } finally {
       setIsLoading(false);
     }
@@ -106,7 +109,7 @@ export const AuthProvider = ({ children }: Props) => {
         const teachersData = Object.entries(snapshot.val()).map(
           ([key, value]) => ({
             id: key,
-            ...value,
+            ...(value as object),
           })
         );
 
@@ -115,8 +118,9 @@ export const AuthProvider = ({ children }: Props) => {
         toast.error("No data available");
         return [];
       }
-    } catch (error) {
+    } catch {
       toast.error("Failed to fetch data");
+      return [];
     }
   };
 

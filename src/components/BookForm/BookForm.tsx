@@ -4,10 +4,10 @@ import css from "./BookForm.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import ReactModal from "react-modal";
+import ReactModal, { Props as ModalProps } from "react-modal";
 import { FormProp } from "../../types/indexTypes";
 
-const customStyles = {
+const customStyles: ModalProps["style"] = {
   content: {
     top: "50%",
     left: "50%",
