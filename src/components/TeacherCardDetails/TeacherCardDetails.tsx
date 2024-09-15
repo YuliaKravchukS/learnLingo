@@ -30,8 +30,8 @@ const TeacherCardDetails: React.FC<TeacherCardProp> = ({ teacher }) => {
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
   const [isFavorites, setIsFavorites] = useState<boolean>(false);
-  const languagesFlat = languages.join(", ");
-  const conditionsFlat = conditions.join(" ");
+  const languagesFlat = languages?.join(", ");
+  const conditionsFlat = conditions?.join(" ");
   const { user } = useAuth();
   const userId = user?.uid;
 
