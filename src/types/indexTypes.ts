@@ -64,6 +64,10 @@ interface Review {
 
 export interface TeacherCardProp {
   teacher: dataProp;
+  setTeachers: React.Dispatch<React.SetStateAction<ApiProp>>;
+}
+export interface LevelsProp {
+  teacher: dataProp;
 }
 
 export interface FilterBarProp {

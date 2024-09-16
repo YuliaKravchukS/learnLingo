@@ -48,7 +48,7 @@ const TeachersList: React.FC<TeachersListProp> = ({ filters }) => {
         {teachers.length > 0 &&
           teachers.map((teacher, idx) => (
             <li className={css.item} key={idx}>
-              <TeacherCardDetails teacher={teacher} />
+              <TeacherCardDetails teacher={teacher} setTeachers={setTeachers} />
             </li>
           ))}
       </ul>

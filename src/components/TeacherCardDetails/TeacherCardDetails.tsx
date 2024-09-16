@@ -4,7 +4,7 @@ import icons from "../../img/sprite.svg";
 import LevelsList from "../LevelsList/LevelsList";
 import Button from "../../ui/Button/Button";
 import BookForm from "../BookForm/BookForm";
-import { TeacherCardProp } from "../../types/indexTypes";
+import { dataProp, TeacherCardProp } from "../../types/indexTypes";
 import css from "./TeacherCardDetails.module.css";
 import avatarReviewer from "../../img/avatar.png";
 import { onValue, ref, remove, set } from "firebase/database";
@@ -12,7 +12,10 @@ import { db } from "../../firebase/firebase-config";
 import { useAuth } from "../../context/auth-context";
 import toast from "react-hot-toast";
 
-const TeacherCardDetails: React.FC<TeacherCardProp> = ({ teacher }) => {
+const TeacherCardDetails: React.FC<TeacherCardProp> = ({
+  teacher,
+  setTeachers,
+}) => {
   const {
     experience,
     reviews,
@@ -50,6 +53,9 @@ const TeacherCardDetails: React.FC<TeacherCardProp> = ({ teacher }) => {
       const favoritesRef = ref(db, `/users/${userId}/favorites/${id}`);
       if (isFavorites) {
         await remove(favoritesRef);
+        setTeachers((prevTeachers) =>
+          prevTeachers.filter((teacher: dataProp) => teacher.id !== id)
+        );
         toast.success("Teacher removed from favorites.");
       } else {
         await set(favoritesRef, { ...teacher });

@@ -1,8 +1,8 @@
 import React from "react";
-import { TeacherCardProp } from "../../types/indexTypes";
+import { LevelsProp } from "../../types/indexTypes";
 import css from "./LevelsList.module.css";
 
-const LevelsList: React.FC<TeacherCardProp> = ({ teacher }) => {
+const LevelsList: React.FC<LevelsProp> = ({ teacher }) => {
   return (
     <ul className={css.list}>
       {teacher?.levels &&
