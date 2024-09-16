@@ -10,7 +10,7 @@
   flex-direction: column;
   gap: 24px;
   padding: 14px;
-  width: 270px;
+  min-width: 270px;
   min-height: 328px;
   margin: 0 auto;
   background-color: #fff;
@@ -156,7 +156,7 @@
 
 @media screen and (min-width: 768px) {
   .mainInfo {
-    width: 718px;
+    min-width: 718px;
   }
   .avatar {
     border-radius: 50%;

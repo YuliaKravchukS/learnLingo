@@ -41,7 +41,7 @@ body {
   background-color: #fff;
 }
 .container {
-  width: 320px;
+  min-width: 320px;
   padding: 20px;
   margin: 0 auto;
 }
@@ -54,7 +54,7 @@ body {
 }
 @media screen and (min-width: 768px) {
   .container {
-    width: 768px;
+    min-width: 768px;
   }
 }
 @media screen and (min-width: 1440px) {

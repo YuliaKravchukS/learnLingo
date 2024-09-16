@@ -14,9 +14,8 @@ const customStyles: ModalProps["style"] = {
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
-    maxHeight: "90vh",
-    width: "90%",
     padding: "0",
+    maxWidth: "90%",
     border: "none",
     borderRadius: "30px",
     transform: "translate(-50%, -50%)",
@@ -49,7 +48,10 @@ const BookForm = ({ teacher, closeModal, state }: FormProp) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: FormData) => console.log(data);
+  const onSubmit = () => {
+    closeModal();
+  };
+
   return (
     <ReactModal isOpen={state} onRequestClose={closeModal} style={customStyles}>
       <div className={css.overlayForm}>

@@ -50,8 +50,10 @@ const TeacherCardDetails: React.FC<TeacherCardProp> = ({ teacher }) => {
       const favoritesRef = ref(db, `/users/${userId}/favorites/${id}`);
       if (isFavorites) {
         await remove(favoritesRef);
+        toast.success("Teacher removed from favorites.");
       } else {
         await set(favoritesRef, { ...teacher });
+        toast.success("Teacher added to favorites.");
       }
       setIsFavorites(!isFavorites);
     }

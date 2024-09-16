@@ -15,6 +15,7 @@ const customStyles = {
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
+    maxWidth: "90%",
     padding: "0",
     border: "none",
     borderRadius: "30px",

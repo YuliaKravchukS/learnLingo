@@ -32,6 +32,10 @@
   height: 24px;
   stroke: black;
 }
+.active {
+  color: coral;
+  font-style: italic;
+}
 
 @media screen and (min-width: 768px) {
   .mobMenu {

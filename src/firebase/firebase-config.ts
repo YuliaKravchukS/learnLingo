@@ -3,12 +3,12 @@ import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 
 const app = initializeApp({
-  apiKey: "AIzaSyDtmLLNGeVfXD9Sy9cBwb7sjpVDv3lxfDc",
-  authDomain: "learn-lingo-639aa.firebaseapp.com",
-  projectId: "learn-lingo-639aa",
-  storageBucket: "learn-lingo-639aa.appspot.com",
-  messagingSenderId: "18810231843",
-  appId: "1:18810231843:web:f4aad13d6bfe34371ae596",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 });
 
 export const firebaseAuth = getAuth(app);

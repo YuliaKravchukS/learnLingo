@@ -1,6 +1,6 @@
 .overlay {
   background: #fff;
-  width: 270px;
+  min-width: 270px;
   padding: 24px;
   position: relative;
 }
@@ -78,7 +78,7 @@
 @media screen and (min-width: 768px) {
   .overlay {
     width: 566px;
-    height: 59px;
+    height: 599px;
     padding: 64px;
   }
   .icon {

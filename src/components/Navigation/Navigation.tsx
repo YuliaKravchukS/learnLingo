@@ -3,6 +3,10 @@ import { NavLink } from "react-router-dom";
 import css from "./Navigation.module.css";
 import { useAuth } from "../../context/auth-context";
 import icons from "../../img/sprite.svg";
+import clsx from "clsx";
+
+const getNavLinkClassName = ({ isActive }: { isActive: boolean }) =>
+  clsx(css.link, { [css.active]: isActive });
 
 const Navigation = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
@@ -14,18 +18,18 @@ const Navigation = () => {
       <nav className={css.deskNavigation}>
         <ul className={css.list}>
           <li>
-            <NavLink className={css.link} to='/'>
+            <NavLink className={getNavLinkClassName} to='/'>
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink className={css.link} to='/teachers'>
+            <NavLink className={getNavLinkClassName} to='/teachers'>
               Teachers
             </NavLink>
           </li>
           {user && (
             <li>
-              <NavLink className={css.link} to='/favorites'>
+              <NavLink className={getNavLinkClassName} to='/favorites'>
                 Favorites
               </NavLink>
             </li>

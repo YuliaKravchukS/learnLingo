@@ -3,6 +3,7 @@ import "./App.css";
 import Layuot from "./components/Layuot";
 import { lazy } from "react";
 import { Toaster } from "react-hot-toast";
+import NotFound from "./pages/NotFound/NotFound";
 const Home = lazy(() => import("./pages/Home/Home"));
 const Teachers = lazy(() => import("./pages/Teachers/Teachers"));
 const Favorites = lazy(() => import("./pages/Favorites/Favorites"));
@@ -15,6 +16,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/teachers' element={<Teachers />} />
         <Route path='/favorites' element={<Favorites />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </Layuot>
   );
