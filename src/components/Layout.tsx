@@ -3,7 +3,7 @@ import AppBar from "./AppBar/AppBar";
 import { Props } from "../types/indexTypes";
 import Loader from "./Loader/Loader";
 
-const Layuot = ({ children }: Props) => {
+const Layout = ({ children }: Props) => {
   return (
     <div>
       <AppBar />
@@ -12,4 +12,4 @@ const Layuot = ({ children }: Props) => {
   );
 };
 
-export default Layuot;
+export default Layout;
