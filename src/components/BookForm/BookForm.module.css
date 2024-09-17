@@ -140,6 +140,19 @@ input[type="radio"]:checked + .customRadioBox::before {
   bottom: -18px;
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  height: 500px;
+  margin: 20px;
+}
 @media screen and (min-width: 768px) {
   .overlayForm {
     padding: 64px;

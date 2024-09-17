@@ -16,6 +16,7 @@ const customStyles: ModalProps["style"] = {
     marginRight: "-50%",
     padding: "0",
     maxWidth: "90%",
+    maxHeight: "90%",
     border: "none",
     borderRadius: "30px",
     transform: "translate(-50%, -50%)",
